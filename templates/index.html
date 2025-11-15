@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Network Visualizer</title>
+</head>
+<body>
+    <h1>Network Visualizer</h1>
+    <p>Waiting for suspicious activity</p>
+
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="alerts"></tbody>
+    </table>
+
+    <script>
+        async function loadAlerts() {
+            const response = await fetch("/alerts");
+            const data = await response.json();
+            const tbody = document.getElementById("alerts");
+            tbody.innerHTML = "";
+
+            data.forEach(alert => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${alert.time}</td>
+                    <td>${alert.type}</td>
+                    <td>${alert.description}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        setInterval(loadAlerts, 2000);
+        loadAlerts();
+    </script>
+</body>
+</html>
