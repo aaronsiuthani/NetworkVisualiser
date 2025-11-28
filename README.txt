@@ -10,15 +10,25 @@ Shows suspicious activity on a live web site.
 - Flask serving JSON alerts
 
 # Running instructions
-1. Create the virtual environment
+1. Clone the repository
+git clone https://github.com/aaronsiuthani/NetworkVisualiser.git
+
+2. Create the virtual environment and activate it
+python3 -m venv .venv
+source .venv/bin/activate
 
 
-2. Install dependencies by running
+3. Install dependencies by running
    'pip install flask scapy'
 
-3. Run the sniffer:
+4. Run the sniffer:
    'sudo python3 app.py'
 
-4. Open the website
+5. Open the website
    'http://localhost:5000'
+
+# Future improvements
+Add live charts or graphs
+Store the alerts into a database
+Add information lookup for specific devices
 
